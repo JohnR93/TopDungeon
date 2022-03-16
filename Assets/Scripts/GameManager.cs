@@ -15,8 +15,6 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        PlayerPrefs.DeleteAll();
-
         instance = this;
         SceneManager.sceneLoaded += LoadState;
         DontDestroyOnLoad(gameObject);
@@ -46,6 +44,7 @@ public class GameManager : MonoBehaviour
         s += "0";
 
         PlayerPrefs.SetString("SaveState", s);
+        Debug.Log("Save State");
     }
 
     public void LoadState(Scene s, LoadSceneMode mode)
@@ -53,6 +52,7 @@ public class GameManager : MonoBehaviour
         if(!PlayerPrefs.HasKey("SaveState"))
             return;
         string[] data = PlayerPrefs.GetString("SaveState").Split('|');
+
         //Change player skin
         pesos = int.Parse(data[1]);
         experience = int.Parse(data[2]);
