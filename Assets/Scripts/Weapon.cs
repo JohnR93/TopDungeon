@@ -1,3 +1,5 @@
+using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -37,7 +39,28 @@ public class Weapon : Collidable
 
     private void Swing()
     {
-        Debug.Log("Swing");
+        UnityEngine.Debug.Log("Swing");
+    }
+
+    protected override void OnCollide(Collider2D coll)
+    {
+        if(coll.tag == "Fighter")
+        {
+            if(coll.name == "Player")
+            return;
+            
+            //Create a new Damage object, then we'll send it to fighter we've hit
+            Damage dmg = new Damage
+            {
+                damegeAmount = damegePoint,
+                origin = transform.position,
+                pushForce = pushForce
+            };
+
+            coll.SendMessage("ReciveDamage", dmg);
+
+        }
+        
     }
 
 }
