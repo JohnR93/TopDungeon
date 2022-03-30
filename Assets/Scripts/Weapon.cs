@@ -52,12 +52,12 @@ public class Weapon : Collidable
             //Create a new Damage object, then we'll send it to fighter we've hit
             Damage dmg = new Damage
             {
-                damegeAmount = damegePoint,
+                damageAmount = damegePoint,
                 origin = transform.position,
                 pushForce = pushForce
             };
 
-            coll.SendMessage("ReciveDamage", dmg);
+            coll.SendMessage("ReceiveDamage", dmg);
 
         }
         

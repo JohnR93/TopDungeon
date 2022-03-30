@@ -5,6 +5,6 @@ using UnityEngine;
 public class Damage : MonoBehaviour
 {
     public Vector3 origin;
-    public int damegeAmount;
+    public int damageAmount;
     public float pushForce;
 }
