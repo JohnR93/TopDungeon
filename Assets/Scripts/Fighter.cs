@@ -40,6 +40,6 @@ public class Fighter : MonoBehaviour
 
     protected virtual void Death()
     {
-
+        
     }
 }

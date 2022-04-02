@@ -32,7 +32,8 @@ public class Enemy : Mover
         //Is that player in range?
         if(Vector3.Distance(playerTrasform.position, startingPosition) < chaselength)
         {
-            chasing = Vector3.Distance(playerTrasform.position, startingPosition) < triggerLength;
+            if(Vector3.Distance(playerTrasform.position, startingPosition) < triggerLength)
+                chasing = true;
 
             if (chasing)
             {
@@ -71,6 +72,12 @@ public class Enemy : Mover
         }
 
 
+    }
+    protected override void Death()
+    {
+        Destroy(gameObject);
+        GameManager.instance.experience = xpValue;
+        GameManager.instance.ShowText("+" + xpValue + "xp", 30, Color.magenta, transform.position, Vector3.up * 40, 1.0f);
     }
 
 }
