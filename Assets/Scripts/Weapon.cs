@@ -43,7 +43,6 @@ public class Weapon : Collidable
     private void Swing()
     {
          anim.SetTrigger("Swing");
-         
     }
 
     protected override void OnCollide(Collider2D coll)
